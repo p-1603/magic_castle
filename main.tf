@@ -7,26 +7,27 @@ terraform {
   }
 }
 
-variable "nb_nodes" {}
-variable "password" {}
-
 provider "github" {}
 provider "tfe" {}
 
 variable "organization" {
   type        = string
+  default     = "kuano"
   description = "Name of your organization in Terraform Cloud"
 }
 variable "hostname" {
   type        = string
+  default     = "pringle"
   description = "Hostname of the Magic Castle cluster to build"
 }
 variable "sshkey" {
   type        = string
+  default     = "~/.ssh/id_ed25519_23022022.pub"
   description = "Personal SSH key to connect to the cluster"
 }
 variable "cloud" {
   type        = string
+  default     = "ovh"
   description = "Cloud provider to use"
   validation {
      condition     = contains(["openstack", "ovh"], var.cloud)
@@ -44,6 +45,7 @@ variable "dns" {
 }
 variable "github_token" {
   type        = string
+  default     = "~/.ssh/gitkey2"
   description = "GitHub token to use"
 }
 variable "tfe_token" {
